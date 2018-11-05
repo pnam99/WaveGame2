@@ -128,7 +128,7 @@ public class Game extends Canvas implements Runnable {
 	private void tick() {
 		handler.tick();// ALWAYS TICK HANDLER, NO MATTER IF MENU OR GAME SCREEN
 		if (gameState == STATE.Game) {// game is running
-			hud.tick();
+			upgradeScreen.tick();
 			if (Spawn1to10.LEVEL_SET == 1) {// user is on levels 1 thru 10, update them
 				spawner.tick();
 			} else if (Spawn1to10.LEVEL_SET == 2) {// user is on levels 10 thru 20, update them
@@ -161,7 +161,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		Graphics g = bs.getDrawGraphics();
 
-		///////// Draw things below this/////////////
+		///////// Draw things bellow this/////////////
 		
 		g.setColor(Color.black);
 		g.fillRect(0, 0, (int) WIDTH, (int) HEIGHT);

@@ -10,7 +10,7 @@ import java.awt.Rectangle;
  * @author Brandon Loehle 5/30/16
  *
  */
-
+//NOT IMPLEMENTED?
 public class EnemyFast extends GameObject {
 
 	private Handler handler;
@@ -27,12 +27,15 @@ public class EnemyFast extends GameObject {
 		if(dif)
 		{
 			this.x += velX/2;
+			
 			this.y += velY/2;
 		}
 		else
 		{
 			this.x += velX;
+
 			this.y += velY;
+			
 		}
 		if (this.y <= 0 || this.y >= Game.HEIGHT - 40) {
 			velY *= -1;
@@ -44,12 +47,12 @@ public class EnemyFast extends GameObject {
 		//x = Game.clamp(x, 0, Game.WIDTH - 674);
 		//y = Game.clamp(y, 0, Game.HEIGHT - 453);
 
-		handler.addObject(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.025, this.handler));
+		handler.addObject(new Trail(x, y, ID.Trail, Color.MAGENTA, 16, 16, 0.025, this.handler));
 
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.cyan);
+		g.setColor(Color.MAGENTA);
 		g.fillRect((int) x, (int) y, 16, 16);
 
 	}

@@ -51,11 +51,12 @@ public class EnemyShooter extends GameObject {
 			this.y += velY;
 		}
 
-		if (this.y <= 0 || this.y >= Game.HEIGHT - 40)
+		if (this.y <= 0 || this.y >= Game.HEIGHT - 446) {
 			velY *= -1;
-		if (this.x <= 0 || this.x >= Game.WIDTH - 16)
+		}
+		if (this.x <= 0 || this.x >= Game.WIDTH - 650) {
 			velX *= -1;
-
+		}
 		//x = Game.clamp(x, 0, Game.WIDTH - 674);
 		//y = Game.clamp(y, 0, Game.HEIGHT - 453);
 		

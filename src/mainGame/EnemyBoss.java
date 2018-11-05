@@ -77,7 +77,7 @@ public class EnemyBoss extends GameObject {
 		}
 
 		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
-		if (this.x <= 0 || this.x >= Game.WIDTH - 96)
+		if (this.x <= 0 || this.x >= Game.WIDTH - 742)
 			velX *= -1;
 
 		// handler.addObject(new Trail(x, y, ID.Trail, Color.red, 96, 96, 0.025,

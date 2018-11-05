@@ -132,7 +132,8 @@ public class MouseListener extends MouseAdapter {
 			{
 				game.gameState=STATE.Game;
 				game.setDif(true);//Sets to easy mode
-				handler.addObject(player);		
+				handler.addObject(player);
+				//game.gameState = STATE.Upgrade;
 			}
 			
 			else if(mouseOver(mx,my,700, 400, 200, 64))//Hard

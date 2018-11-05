@@ -3,11 +3,6 @@ package mainGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +24,7 @@ public class Menu {
 	private Game game;
 	private Handler handler;
 	private HUD hud;
-	private BufferedImage img, img2;
+	private BufferedImage img;
 	private int timer;
 	private Random r;
 	private ArrayList<Color> colorPick = new ArrayList<Color>();
@@ -51,33 +46,26 @@ public class Menu {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		img2 = null;
-		try {
-			img2 = ImageIO.read(new File("images/backgroundHelp.jpg"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
-				colorPick.get(r.nextInt(4)), ID.Firework, this.handler,true));
+				colorPick.get(r.nextInt(6)), ID.Firework, this.handler,true));
 	}
 
-	public void addColors() { // These determine the fireworks' colors
-		Color customBlue = new Color(0,54,130);
-		Color customYellow = new Color(186,151,39);
-		Color customRed = new Color(142,11,52);
-		colorPick.add(customBlue); //QU Blue (RGB)
-		colorPick.add(customYellow); //QU Yellow (RGB)
-		colorPick.add(Color.WHITE); //QU White
-		colorPick.add(customRed); //QU Red (Bobcat's mouth) (RGB)
+	public void addColors() {
+		colorPick.add(Color.blue);
+		colorPick.add(Color.white);
+		colorPick.add(Color.green);
+		colorPick.add(Color.red);
+		colorPick.add(Color.cyan);
+		colorPick.add(Color.magenta);
+		colorPick.add(Color.yellow);
 	}
 
 	public void tick() {
 		timer--;
 		if (timer <= 0) {
 			handler.object.clear();
-			colorIndex = r.nextInt(4);
+			colorIndex = r.nextInt(6);
 			handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 1080, 100, 100, 0, -4,
 					colorPick.get(colorIndex), ID.Firework, this.handler,true));
 			timer = 300;
@@ -103,7 +91,7 @@ public class Menu {
 			
 			g.setFont(font);
 			g.setColor(Color.white);
-			g.drawString("Quinnipiac: The Legend Of The Bobcat", 80, 90);
+			g.drawString("Wave Game", 500, 90);
 
 			g.setColor(Color.RED);
 			g.drawRect(800, 125, 400, 490);//(X,Y,Width,Height)
@@ -131,40 +119,18 @@ public class Menu {
 			g.drawString("Quit", 310, 570);
 		
 
-		} else if (game.gameState == STATE.Help) {// if the user clicks on "Help"
-			g.drawImage(img2, 0, 0, 1280, 700, null); //Sets the background for help menu
-			handler.render(g); //Sets the background for help menu
-			Font font = new Font("Amoebic", 1, 55);
-			Font font2 = new Font("Amoebic", 5, 20);
+		} else if (game.gameState == STATE.Help) {// if the user clicks on "help"
+			Font font = new Font("impact", 1, 50);
+			Font font2 = new Font("impact", 1, 30);
 
 			g.setFont(font);
 			g.setColor(Color.white);
-			g.drawString("Help", 595, 85);
+			g.drawString("Help", 600, 100);
 
 			g.setFont(font2);
-			
-			// Controls Explanation
-			g.drawString("Controls:", 900, 150);
-			g.drawString("_______", 900, 155); // "Underline" text
-			g.drawString("W/↑: Move Up", 900, 190);
-			g.drawString("S/↓: Move Down", 900, 220);
-			g.drawString("A/←: Move Left", 900, 250);
-			g.drawString("D/→: Move Right", 900, 280);
-			g.drawString("ENTER: Use Upgrade", 900, 310);
-			g.drawString("ESC: Quit Game", 900, 340);
-			
-			// "How To Play" Explanation
-			g.drawString("How To Play:", 100, 150);
-			g.drawString("___________", 100, 155); // "Underline" text
-			g.drawString("-Avoid enemies as long as possible", 100, 190);
-			g.drawString("by moving around with the keys.", 100, 210);
-			g.drawString("-As you advance through the stages,", 100, 240);
-			g.drawString("the difficulty will slightly increase.", 100, 260);
-			g.drawString("-Each time you beat the boss stage,", 100, 290);
-			g.drawString("you obtain a new upgrade that can help you survive.", 100, 310);
-			g.drawString("-Your health bar is displayed on the top left.", 100, 340);
-			g.drawString("You lose health when enemies hit you. Once it depletes, the game is over.", 100, 360);
-			
+			g.drawString("Waves: Simply use WASD to avoid enemies.", 370, 200);
+			g.drawString("Once you avoid" + " \n"
+					+ "them long enough, a new batch will spawn in! Defeat each boss to win!", 60, 300);
 
 			g.setFont(font2);
 			g.setColor(Color.white);
@@ -193,9 +159,7 @@ public class Menu {
 			g.drawString("Hard", 770, 443);
 			
 			
-		}
 		
-
 	}
-
+	}
 }
