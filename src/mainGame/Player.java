@@ -3,10 +3,7 @@ package mainGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.net.URL;
 import java.util.Random;
 
 import mainGame.Game.STATE;
@@ -27,15 +24,9 @@ public class Player extends GameObject {
 	private int damage;
 	private int playerWidth, playerHeight;
 	public static int playerSpeed = 10;
-	public Image image;
-	private Color color;
-	private Color trailColor;
-	private Trail trail;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game, boolean dif) {
 		super(x, y, id,dif);
-		this.color=color.WHITE;
-		this.trailColor=color.WHITE;
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
@@ -60,8 +51,8 @@ public class Player extends GameObject {
 		x = Game.clamp(x, 0, Game.WIDTH - 674);
 		y = Game.clamp(y, 0, Game.HEIGHT - 453);
 
-		this.trail=new Trail(x, y, ID.Trail, trailColor, playerWidth, playerHeight, 0.05, this.handler);
-		handler.addObject(trail);
+		// add the trail that follows it
+		handler.addObject(new Trail(x, y, ID.Trail, Color.white, playerWidth, playerHeight, 0.05, this.handler));
 
 		collision();
 		checkIfDead();
@@ -119,13 +110,8 @@ public class Player extends GameObject {
 	@Override
 	public void render(Graphics g) {
 
-		
-		g.setColor(color);
+		g.setColor(Color.white);
 		g.fillRect((int) x, (int) y, playerWidth, playerHeight);
-		if(this.hasImage())
-		{
-			g.drawImage(this.image, (int) this.x, (int) this.y, 32, 32, null);
-		}
 
 	}
 
@@ -141,31 +127,6 @@ public class Player extends GameObject {
 	public void setPlayerSize(int size) {
 		this.playerWidth = size;
 		this.playerHeight = size;
-	}
-	
-	public void insertImage(Image image)
-	{
-		this.image=image;
-	}
-	
-	public void setColor(Color color)
-	{
-		this.color=color;
-	}
-	
-	public void setTrailColor(Color color)
-	{
-		this.trailColor=color;
-	}
-	
-	public boolean hasImage()
-	{
-		return this.image!=null;
-	}
-
-	public Trail getTrail() {
-		// TODO Auto-generated method stub
-		return this.trail;
 	}
 
 }

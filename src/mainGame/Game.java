@@ -31,14 +31,14 @@ public class Game extends Canvas implements Runnable {
 	private MouseListener mouseListener;
 	private Upgrades upgrades;
 	private Player player;
-	public static STATE gameState = STATE.Menu;
+	public STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
 
 	/**
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Difficulty, Skins,
+		Menu, Help, Game, GameOver, Upgrade, Difficulty,
 	};
 
 	/**
@@ -141,10 +141,6 @@ public class Game extends Canvas implements Runnable {
 		} else if (gameState == STATE.GameOver) {// game is over, update the game over screen
 			gameOver.tick();
 		}
-		else if (gameState == STATE.Skins) {// game is over, update the game over screen
-			handler.clearPlayer();
-		}
-		
 
 	}
 

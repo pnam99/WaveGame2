@@ -91,7 +91,7 @@ public class MouseListener extends MouseAdapter {
 
 		else if (game.gameState == STATE.Menu) {
 			// Waves Button
-			if (mouseOver(mx, my, 800, 125, 400, 240)) {
+			if (mouseOver(mx, my, 800, 125, 400, 490)) {
 				game.gameState = STATE.Difficulty;
 				// handler.addObject(player);
 				// handler.addPickup(new PickupHealth(100, 100, ID.PickupHealth,
@@ -104,7 +104,7 @@ public class MouseListener extends MouseAdapter {
 			}
 
 			// Credits
-			else if (mouseOver(mx, my, 80, 435, 850, 250)) {
+			else if (mouseOver(mx, my, 80, 300, 600, 135)) {
 				JOptionPane.showMessageDialog(game,
 						"Made by Brandon Loehle for his "
 								+ "final project in AP Computer Science senior year, 2015 - 2016."
@@ -115,12 +115,6 @@ public class MouseListener extends MouseAdapter {
 			// Quit Button
 			else if (mouseOver(mx, my, 80, 479, 600, 135)) {
 				System.exit(1);
-			}
-			
-			else if (mouseOver(mx,my,800, 370, 400, 240))
-			{
-				game.gameState=STATE.Skins;
-				SkinsWindow window=new SkinsWindow(handler,player);
 			}
 		}
 
