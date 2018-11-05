@@ -55,9 +55,23 @@ public class Handler {
 	 * the tick() function on each object
 	 */
 	public void render(Graphics g) {
+		
+		Player temp=null;
 		for (int i = 0; i < object.size(); i++) {
 			GameObject tempObject = object.get(i);
-			tempObject.render(g);
+			if(tempObject instanceof Player)
+			{
+				temp=(Player)tempObject;
+			}
+			else
+			{
+				tempObject.render(g);
+			}
+			
+		}
+		if(temp!=null)
+		{
+			temp.render(g);
 		}
 		for (int i = 0; i < pickups.size(); i++) {
 			Pickup tempObject = pickups.get(i);

@@ -94,17 +94,16 @@ public class Menu {
 			g.drawString("Wave Game", 500, 90);
 
 			g.setColor(Color.RED);
-			g.drawRect(800, 125, 400, 490);//(X,Y,Width,Height)
+			g.drawRect(800, 125, 400, 240);//(X,Y,Width,Height)
 			g.setFont(font2);
 			g.setColor(Color.RED);
-			g.drawString("Waves",905,384);
-
+			g.drawString("Waves",905,270);
 			
-			g.setColor(Color.green);
-			g.drawRect(80, 125, 600, 135);
-			g.setFont(font);
-			g.setColor(Color.green);
-			g.drawString("Help", 310, 216);
+			g.setColor(Color.MAGENTA);
+			g.drawRect(800, 370, 400, 240);//(X,Y,Width,Height)
+			g.setFont(font2);
+			g.setColor(Color.MAGENTA);
+			g.drawString("Skins",905,510);
 			
 			g.setColor(Color.CYAN);
 			g.drawRect(80, 300, 600, 135);
