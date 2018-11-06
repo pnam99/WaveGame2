@@ -3,6 +3,7 @@ package mainGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
 
@@ -24,10 +25,16 @@ public class Player extends GameObject {
 	private int damage;
 	private int playerWidth, playerHeight;
 	public static int playerSpeed = 10;
+	private Image image;
+	private Color color;
+	private Color trailColor;
+	private Trail trail;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game, boolean dif) {
 		super(x, y, id,dif);
 		this.handler = handler;
+		this.color=Color.white;
+		this.trailColor=Color.WHITE;
 		this.hud = hud;
 		this.game = game;
 		this.damage = 2;
@@ -51,9 +58,9 @@ public class Player extends GameObject {
 		x = Game.clamp(x, 0, Game.WIDTH - 674);
 		y = Game.clamp(y, 0, Game.HEIGHT - 453);
 
-		// add the trail that follows it
-		handler.addObject(new Trail(x, y, ID.Trail, Color.white, playerWidth, playerHeight, 0.05, this.handler));
-
+		Trail trail=new Trail(x, y, ID.Trail, trailColor, playerWidth, playerHeight, 0.05, this.handler);
+		this.trail=trail;
+		handler.addObject(this.trail);
 		collision();
 		checkIfDead();
 
@@ -110,8 +117,12 @@ public class Player extends GameObject {
 	@Override
 	public void render(Graphics g) {
 
-		g.setColor(Color.white);
+		g.setColor(this.color);
 		g.fillRect((int) x, (int) y, playerWidth, playerHeight);
+		if(this.image!=null)
+		{
+			g.drawImage(this.image, (int) this.x, (int) this.y, 32, 32, null);
+		}
 
 	}
 
@@ -127,6 +138,25 @@ public class Player extends GameObject {
 	public void setPlayerSize(int size) {
 		this.playerWidth = size;
 		this.playerHeight = size;
+	}
+
+	public void insertImage(Image image) {
+		this.image=image;
+		
+	}
+
+	public void setColor(Color color) {
+		this.color=color;
+		
+	}
+
+	public void setTrailColor(Color color) {
+		this.trailColor=color;
+		
+	}
+
+	public Trail getTrail() {
+		return this.trail;
 	}
 
 }

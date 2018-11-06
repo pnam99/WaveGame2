@@ -123,10 +123,16 @@ public class Menu {
 			g.drawString("QU: The Legend Of The Bobcat", 200, 90); // Title text displayed at the top of the main menu
 
 			g.setColor(Color.RED);
-			g.drawRect(800, 125, 400, 490);//(X,Y,Width,Height)
+			g.drawRect(800, 125, 400, 240);//(X,Y,Width,Height)
 			g.setFont(font2);
 			g.setColor(Color.RED);
-			g.drawString("Waves",905,384);
+			g.drawString("Waves",905,270);
+			
+			g.setColor(Color.MAGENTA);
+			g.drawRect(800, 370, 400, 240);//(X,Y,Width,Height)
+			g.setFont(font2);
+			g.setColor(Color.MAGENTA);
+			g.drawString("Skins",905,510);
 
 			
 			g.setColor(Color.green);
@@ -164,10 +170,10 @@ public class Menu {
 			// Controls Explanation
 			g.drawString("Controls:", 950, 150);
 			g.drawString("_______", 950, 155); // "Underline" text
-			g.drawString("W/↑: Move Up", 950, 190);
-			g.drawString("S/↓: Move Down", 950, 220);
-			g.drawString("A/←: Move Left", 950, 250);
-			g.drawString("D/→: Move Right", 950, 280);
+			g.drawString("W/â†‘: Move Up", 950, 190);
+			g.drawString("S/â†“: Move Down", 950, 220);
+			g.drawString("A/â†�: Move Left", 950, 250);
+			g.drawString("D/â†’: Move Right", 950, 280);
 			g.drawString("ENTER: Use Upgrade", 950, 310);
 			g.drawString("ESC: Quit Game", 950, 340);
 			
