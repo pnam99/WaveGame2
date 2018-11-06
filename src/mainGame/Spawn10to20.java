@@ -60,9 +60,9 @@ public class Spawn10to20 {
 		if (levelNumber <= 0) {
 			levelTimer--;
 			if (tempCounter < 1) {
-				handler.addObject(new LevelText(Game.WIDTH / 2 - 675, Game.HEIGHT / 2 - 200, "Same levels...",
+				handler.addObject(new LevelText(100,350, "Same levels...",
 						ID.Levels1to10Text, isEasy));
-				handler.addObject(new LevelText(Game.WIDTH / 2 - 675, Game.HEIGHT / 2, "...but a little harder now",
+				handler.addObject(new LevelText(500,350, "...but a little harder now",
 						ID.Levels1to10Text, isEasy));
 				tempCounter++;
 			}
@@ -164,7 +164,7 @@ public class Spawn10to20 {
 		} else if (levelNumber == 4) {
 			levelTimer--;
 			if (tempCounter < 1) {
-				handler.addObject(new EnemyShooter(r.nextInt(Game.WIDTH) - 35, r.nextInt(Game.HEIGHT) - 75, 100, 100,
+				handler.addObject(new EnemyShooter(r.nextInt(1174), r.nextInt(557), 100, 100,
 						-30, ID.EnemyShooter, this.handler,isEasy));
 				levelTimer = 1300;
 				tempCounter++;
@@ -300,7 +300,7 @@ public class Spawn10to20 {
 		} else if (levelNumber == 9) {
 			levelTimer--;
 			if (tempCounter < 1) {
-				handler.addObject(new EnemyShooter(r.nextInt(Game.WIDTH) - 35, r.nextInt(Game.HEIGHT) - 75, 200, 200,
+				handler.addObject(new EnemyShooter(r.nextInt(1074), r.nextInt(457), 200, 200,
 						-40, ID.EnemyShooter, this.handler,isEasy));
 				levelTimer = 2500;
 				tempCounter++;

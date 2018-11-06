@@ -61,7 +61,7 @@ public class MouseListener extends MouseAdapter {
 		}
 
 		else if (game.gameState == STATE.Upgrade) {
-			if (mouseOver(mx, my, 100, 300, 1721, 174)) {
+			if (mouseOver(mx, my, 100, 150, 1092, 112)) {
 				upgradeText = upgradeScreen.getPath(1);
 
 				upgrades.activateUpgrade(upgradeText);
@@ -69,7 +69,7 @@ public class MouseListener extends MouseAdapter {
 				upgradeScreen.removeUpgradeOption(1);
 
 				game.gameState = STATE.Game;
-			} else if (mouseOver(mx, my, 100, 300 + (60 + Game.HEIGHT / 6), 1721, 174)) {
+			} else if (mouseOver(mx, my, 100, 300, 1092, 112)) {
 				upgradeText = upgradeScreen.getPath(2);
 
 				upgrades.activateUpgrade(upgradeText);
@@ -77,7 +77,7 @@ public class MouseListener extends MouseAdapter {
 				upgradeScreen.removeUpgradeOption(2);
 
 				game.gameState = STATE.Game;
-			} else if (mouseOver(mx, my, 100, 300 + 2 * (60 + Game.HEIGHT / 6), 1721, 174)) {
+			} else if (mouseOver(mx, my, 100, 450, 1092, 112)) {
 				upgradeText = upgradeScreen.getPath(3);
 
 				upgrades.activateUpgrade(upgradeText);
@@ -91,7 +91,7 @@ public class MouseListener extends MouseAdapter {
 
 		else if (game.gameState == STATE.Menu) {
 			// Waves Button
-			if (mouseOver(mx, my, 800, 125, 400, 240)) {
+			if (mouseOver(mx, my, 800, 125, 400, 490)) {
 				game.gameState = STATE.Difficulty;
 				// handler.addObject(player);
 				// handler.addPickup(new PickupHealth(100, 100, ID.PickupHealth,

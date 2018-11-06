@@ -23,12 +23,15 @@ public class LevelText extends GameObject {
 			Color.PINK, Color.YELLOW };
 	private Random r = new Random();
 	private int index;
+	private double x1, y1;
 
 	public LevelText(double x, double y, String text, ID id,boolean dif) {
 		super(x, y, id,dif);
 		this.text = text;
 		AffineTransform at = new AffineTransform();
 		timer = 15;
+		x1 = x;
+		y1 = y;
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class LevelText extends GameObject {
 		Font font = new Font("Amoebic", 1, 125);
 		g.setFont(font);
 		g.setColor(color[index]);// set the new random color
-		g.drawString(this.text, 325, 350);
+		g.drawString(this.text, (int) x1, (int) y1);
 
 		if (timer == 0) {
 			index = r.nextInt(9);// get a new random color

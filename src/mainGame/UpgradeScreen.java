@@ -51,7 +51,7 @@ public class UpgradeScreen {
 	}
 
 	public void render(Graphics g) {
-		Font font = new Font("Amoebic", 1, 130);
+		Font font = new Font("Amoebic", 1, 60);
 		text = "Select an Upgrade!";
 		g.setFont(font);
 		g.setColor(Color.WHITE);
@@ -65,9 +65,9 @@ public class UpgradeScreen {
 		g.drawString("Help", 310, 216);
 		
 		// All pictures are 1721 x 174
-		//g.drawImage(getImage(imagePaths.get(index1)), 100, 300, 1721, 174, null);
-		//g.drawImage(getImage(imagePaths.get(index2)), 100, 300 + (60 + Game.HEIGHT / 6), 1721, 174, null);
-		//g.drawImage(getImage(imagePaths.get(index3)), 100, 300 + 2 * (60 + Game.HEIGHT / 6), 1721, 174, null);
+		//g.drawImage(getImage(imagePaths.get(index1)), 100, 150, 1092, 112, null);
+		//g.drawImage(getImage(imagePaths.get(index2)), 100, 300, 1092, 112, null);
+		//g.drawImage(getImage(imagePaths.get(index3)), 100, 450, 1092, 112, null);
 
 	}
 
