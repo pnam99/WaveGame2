@@ -91,7 +91,7 @@ public class MouseListener extends MouseAdapter {
 
 		else if (game.gameState == STATE.Menu) {
 			// Waves Button
-			if (mouseOver(mx, my, 800, 125, 400, 490)) {
+			if (mouseOver(mx, my, 800, 125, 400, 240)) {
 				game.gameState = STATE.Difficulty;
 				// handler.addObject(player);
 				// handler.addPickup(new PickupHealth(100, 100, ID.PickupHealth,

@@ -170,10 +170,10 @@ public class Menu {
 			// Controls Explanation
 			g.drawString("Controls:", 950, 150);
 			g.drawString("_______", 950, 155); // "Underline" text
-			g.drawString("W/â†‘: Move Up", 950, 190);
-			g.drawString("S/â†“: Move Down", 950, 220);
-			g.drawString("A/â†�: Move Left", 950, 250);
-			g.drawString("D/â†’: Move Right", 950, 280);
+			g.drawString("W/↑: Move Up", 950, 190);
+			g.drawString("S/↓: Move Down", 950, 220);
+			g.drawString("A/←: Move Left", 950, 250);
+			g.drawString("D/→: Move Right", 950, 280);
 			g.drawString("ENTER: Use Upgrade", 950, 310);
 			g.drawString("ESC: Quit Game", 950, 340);
 			
