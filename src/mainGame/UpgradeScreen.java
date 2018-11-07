@@ -55,19 +55,11 @@ public class UpgradeScreen {
 		text = "Select an Upgrade!";
 		g.setFont(font);
 		g.setColor(Color.WHITE);
-		g.drawString(text, 51, 150);
+		g.drawString(text, 1292 / 2 - getTextWidth(font, text) / 2, 100);
 
-		
-		g.setColor(Color.MAGENTA);
-		g.drawRect(80, 125, 600, 135);
-		g.setFont(font);
-		g.setColor(Color.MAGENTA);
-		g.drawString("Help", 310, 216);
-		
-		// All pictures are 1721 x 174
-		//g.drawImage(getImage(imagePaths.get(index1)), 100, 150, 1092, 112, null);
-		//g.drawImage(getImage(imagePaths.get(index2)), 100, 300, 1092, 112, null);
-		//g.drawImage(getImage(imagePaths.get(index3)), 100, 450, 1092, 112, null);
+		g.drawImage(getImage(imagePaths.get(index1)), 100, 150, 1092, 112, null);
+		g.drawImage(getImage(imagePaths.get(index2)), 100, 300, 1092, 112, null);
+		g.drawImage(getImage(imagePaths.get(index3)), 100, 450, 1092, 112, null);
 
 	}
 

@@ -43,7 +43,7 @@ public class LevelText extends GameObject {
 	public void render(Graphics g) {
 		timer--;
 
-		Font font = new Font("Amoebic", 1, 125);
+		Font font = new Font("Amoebic", 1, 60);
 		g.setFont(font);
 		g.setColor(color[index]);// set the new random color
 		g.drawString(this.text, (int) x1, (int) y1);
