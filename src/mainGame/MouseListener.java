@@ -147,6 +147,11 @@ public class MouseListener extends MouseAdapter {
 				game.setDif(false);//Sets to hard mode
 				handler.addObject(player);		
 			}
+			
+			else if(mouseOver(mx,my,551, 540, 200, 64))//Back
+			{
+				game.gameState=STATE.Menu;		
+			}
 		}
 	}
 

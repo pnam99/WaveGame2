@@ -19,8 +19,12 @@ public class LevelText extends GameObject {
 
 	private String text;
 	private int timer;
-	private Color[] color = { Color.WHITE, Color.RED, Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.ORANGE,
-			Color.PINK, Color.YELLOW };
+	
+	Color customBlue = new Color(0,54,130);
+	Color customYellow = new Color(186,151,39);
+	Color customRed = new Color(142,11,52);
+	
+	private Color[] color = { Color.WHITE, new Color(186,151,39), new Color(0,54,130), Color.WHITE };
 	private Random r = new Random();
 	private int index;
 	private double x1, y1;
@@ -49,7 +53,7 @@ public class LevelText extends GameObject {
 		g.drawString(this.text, (int) x1, (int) y1);
 
 		if (timer == 0) {
-			index = r.nextInt(9);// get a new random color
+			index = r.nextInt(4);// get a new random color
 			timer = 15;
 		}
 

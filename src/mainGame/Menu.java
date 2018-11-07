@@ -79,7 +79,7 @@ public class Menu {
 				colorPick.get(r.nextInt(4)), ID.Firework, this.handler,true));
 	}
 
-	public void addColors() { // Determines the firework colors
+	public void addColors() { // Determines the fireworks colors
 		Color customBlue = new Color(0,54,130);
 		Color customYellow = new Color(186,151,39);
 		Color customRed = new Color(142,11,52);
@@ -121,36 +121,38 @@ public class Menu {
 			g.setFont(new Font("Century Gothic", 1, 60));
 			g.setColor(new Color(225,175,39)); //Custom Color
 			g.drawString("QU: The Legend Of The Bobcat", 200, 90); // Title text displayed at the top of the main menu
+			g.setFont(new Font("Century Gothic", 1, 25));
+			g.drawString("Based on a true story...", 500, 120);
 
-			g.setColor(Color.RED);
+			g.setColor(new Color(186,151,39));
 			g.drawRect(800, 125, 400, 240);//(X,Y,Width,Height)
 			g.setFont(font2);
-			g.setColor(Color.RED);
+			g.setColor(new Color(186,151,39));
 			g.drawString("Waves",905,270);
 			
-			g.setColor(Color.MAGENTA);
+			g.setColor(new Color(0,54,130));
 			g.drawRect(800, 370, 400, 240);//(X,Y,Width,Height)
 			g.setFont(font2);
-			g.setColor(Color.MAGENTA);
+			g.setColor(Color.WHITE);
 			g.drawString("Skins",905,510);
 
 			
-			g.setColor(Color.green);
+			g.setColor(Color.WHITE);
 			g.drawRect(80, 125, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.green);
+			g.setColor(Color.WHITE);
 			g.drawString("Help", 310, 216);
 			
-			g.setColor(Color.CYAN);
+			g.setColor(Color.WHITE);
 			g.drawRect(80, 300, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.CYAN);
+			g.setColor(Color.WHITE);
 			g.drawString("Credits", 270, 384);
 			
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.WHITE);
 			g.drawRect(80, 479, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.WHITE);
 			g.drawString("Quit", 310, 570);
 		
 
@@ -201,6 +203,11 @@ public class Menu {
 			Font font = new Font("impact", 1, 100);
 			Font font2 = new Font("impact", 1, 30);
 
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(551, 539, 200, 64);
+			g.drawString("Back", 619, 580);
+			
 			g.setFont(font);
 			g.setColor(Color.white);
 			g.drawString("Select Your Difficulty", 170 , 150);
@@ -208,12 +215,12 @@ public class Menu {
 
 			g.setFont(font2);
 			
-			g.setColor(Color.blue);
+			g.setColor(new Color(0,54,130));
 			g.drawRect(400, 400, 200, 64);
 			g.drawString("Easy", 470, 443);
 			
 			
-			g.setColor(Color.red);
+			g.setColor(new Color(186,151,39));
 			g.drawRect(700, 400, 200, 64);
 			g.drawString("Hard", 770, 443);
 			

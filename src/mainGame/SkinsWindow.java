@@ -24,7 +24,7 @@ public class SkinsWindow extends JFrame {
 		this.setVisible(true);
 		this.setSize(new Dimension(1000, 1000));
 		this.setResizable(false);
-		this.setLocation(400, 0);
+		this.setLocation(150, 0);
 		this.repaint();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.add(_pan);
