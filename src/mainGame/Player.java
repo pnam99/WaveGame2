@@ -121,7 +121,7 @@ public class Player extends GameObject {
 		g.fillRect((int) x, (int) y, playerWidth, playerHeight);
 		if(this.image!=null)
 		{
-			g.drawImage(this.image, (int) this.x, (int) this.y, 32, 32, null);
+			g.drawImage(this.image, (int) this.x, (int) this.y, playerWidth, playerHeight, null);
 		}
 
 	}

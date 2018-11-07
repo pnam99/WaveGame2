@@ -134,7 +134,7 @@ public class Spawn1to10 {
 			} else if (spawnTimer == 20) {
 				handler.addObject(
 						new EnemySweep(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), 20, -2, ID.EnemySweep, handler,isEasy));
-			} else if (spawnTimer == 10) {
+			}else if (spawnTimer == 10) {
 				handler.addObject(
 						new EnemySweep(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), 20, 4, ID.EnemySweep, handler,isEasy));
 			} else if (spawnTimer == 0) {

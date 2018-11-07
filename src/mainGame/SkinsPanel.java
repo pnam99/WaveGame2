@@ -25,7 +25,11 @@ public class SkinsPanel extends JPanel{
 		GridLayout grid=new GridLayout(3,11,10,10);
 		this.setLayout(grid);
 		
-		this.add(new JTextField("Character Colors"));
+		JTextField cc=new JTextField("Player Colors");
+		cc.setEnabled(false);
+		cc.setBackground(Color.black);
+		this.add(cc);
+		
 		SkinsButton red=new SkinsButton(_handler,_player,_trail,Color.red,"Red",true);
 		this.add(red);
 		SkinsButton orange=new SkinsButton(_handler,_player,_trail,Color.orange,"Orange",true);
@@ -47,7 +51,10 @@ public class SkinsPanel extends JPanel{
 		SkinsButton white=new SkinsButton(_handler,_player,_trail,Color.white,"white",true);
 		this.add(white);
 		
-		this.add(new JTextField("Trail Colors"));
+		JTextField tc=new JTextField("Trail Colors");
+		tc.setEnabled(false);
+		tc.setBackground(Color.black);
+		this.add(tc);
 		
 		SkinsButton redT=new SkinsButton(_handler,_player,_trail,Color.red,"Red",false);
 		this.add(redT);
@@ -70,7 +77,10 @@ public class SkinsPanel extends JPanel{
 		SkinsButton whiteT=new SkinsButton(_handler,_player,_trail,Color.white,"white",false);
 		this.add(whiteT);
 		
-		this.add(new JTextField("Character Skins"));
+		JTextField cs=new JTextField("Player Skins");
+		cs.setEnabled(false);
+		cs.setBackground(Color.black);
+		this.add(cs);
 		
 		SkinsButton boss=new SkinsButton(_player,getImage("images/EnemyBoss.png"),"Boss1");
 		this.add(boss);
