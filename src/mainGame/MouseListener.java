@@ -53,6 +53,7 @@ public class MouseListener extends MouseAdapter {
 			spawner2.restart();
 			spawner2.addLevels();
 			Spawn1to10.LEVEL_SET = 1;
+			game.back.play(); // Plays "Back" sound when you click on GameOver screen to go back to menu
 			game.gameState = STATE.Menu;
 		}
 
@@ -92,6 +93,7 @@ public class MouseListener extends MouseAdapter {
 		else if (game.gameState == STATE.Menu) {
 			// Waves Button
 			if (mouseOver(mx, my, 800, 125, 400, 240)) {
+				game.select.play();
 				game.gameState = STATE.Difficulty;
 				// handler.addObject(player);
 				// handler.addPickup(new PickupHealth(100, 100, ID.PickupHealth,
@@ -99,17 +101,20 @@ public class MouseListener extends MouseAdapter {
 			}
 			
 			else if (mouseOver(mx, my,800, 370, 400, 240)) {
+				game.select.play();
 				game.gameState = STATE.Skins;
 				SkinsWindow skins=new SkinsWindow(handler,player);
 			}
 
 			// Help Button
 			else if (mouseOver(mx, my, 80, 125, 600, 135)) {
+				game.select.play();
 				game.gameState = STATE.Help;
 			}
 
 			// Credits
 			else if (mouseOver(mx, my, 80, 300, 600, 135)) {
+				game.select.play();
 				JOptionPane.showMessageDialog(game,
 						"Made by Brandon Loehle for his "
 								+ "final project in AP Computer Science senior year, 2015 - 2016."
@@ -119,6 +124,7 @@ public class MouseListener extends MouseAdapter {
 
 			// Quit Button
 			else if (mouseOver(mx, my, 80, 479, 600, 135)) {
+				game.hit.play();
 				System.exit(1);
 			}
 		}
@@ -126,6 +132,7 @@ public class MouseListener extends MouseAdapter {
 		// Back Button for Help screen
 		else if (game.gameState == STATE.Help) {
 			if (mouseOver(mx, my, 551, 540, 200, 64)) {
+				game.back.play(); // "Back" sound
 				game.gameState = STATE.Menu;
 				return;
 			}
@@ -135,6 +142,7 @@ public class MouseListener extends MouseAdapter {
 		{
 			if(mouseOver(mx,my,400, 400, 200, 64))//Easy
 			{
+				game.select.play();
 				game.gameState=STATE.Game;
 				game.setDif(true);//Sets to easy mode
 				handler.addObject(player);
@@ -143,13 +151,15 @@ public class MouseListener extends MouseAdapter {
 			
 			else if(mouseOver(mx,my,700, 400, 200, 64))//Hard
 			{
+				game.select.play();
 				game.gameState=STATE.Game;
-				game.setDif(false);//Sets to hard mode
+				game.setDif(false);;//Sets to hard mode
 				handler.addObject(player);		
 			}
 			
 			else if(mouseOver(mx,my,551, 540, 200, 64))//Back
 			{
+				game.back.play();
 				game.gameState=STATE.Menu;		
 			}
 		}

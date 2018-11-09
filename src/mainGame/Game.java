@@ -5,6 +5,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.image.BufferStrategy;
+import java.io.File;
+
+import javafx.embed.swing.JFXPanel;
+import mainGame.audio.SoundPlayer; //SOUND
+import mainGame.Game.STATE;
+import mainGame.audio.SoundClip; //SOUND
+
 
 /**
  * Main game class. This class is the driver class and it follows the Holder
@@ -33,6 +40,12 @@ public class Game extends Canvas implements Runnable {
 	private Player player;
 	public static STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
+	
+	public SoundPlayer soundPlayer; //Music Player (that can loop)
+	public SoundClip select, back, hit, die, pause; //SFX (only plays once)
+	
+	private boolean isPaused = false; //SOUND
+	private boolean isMusicPlaying = true; //SOUND
 
 	/**
 	 * Used to switch between each of the screens shown to the user
@@ -59,9 +72,20 @@ public class Game extends Canvas implements Runnable {
 				this.player, this.upgrades);
 		this.addKeyListener(new KeyInput(this.handler, this, this.hud, this.player, this.spawner, this.upgrades));
 		this.addMouseListener(mouseListener);
-		new Window((int) 1292, (int) 695, "Wave Game", this);
-		isEasy=true;//Default
+		new Window((int) 1292, (int) 695, "QU: The Legend Of The Bobcat", this);
+//		isEasy=true;//Default
 		
+		// Setting up the music player
+		JFXPanel jfxp = new JFXPanel(); // trust
+		soundPlayer = new SoundPlayer("music/smashTheme.wav", true);
+		soundPlayer.start();
+		
+//		// Setting up the various SFX
+		select = new SoundClip("sounds/meleeMenuSelect.wav", 0.3);
+		back = new SoundClip("sounds/meleeMenuBack.wav", 0.3);
+		hit = new SoundClip("sounds/steveHurt.wav", 0.45);
+		die = new SoundClip("sounds/robloxDeath.wav", 0.45);
+		pause = new SoundClip("sounds/marioPause.wav", 0.45);
 
 	}
 
@@ -127,28 +151,62 @@ public class Game extends Canvas implements Runnable {
 	 */
 	private void tick() {
 		handler.tick();// ALWAYS TICK HANDLER, NO MATTER IF MENU OR GAME SCREEN
-		if (gameState == STATE.Game) {// game is running
+		if (gameState == STATE.Game) { // GAME state is running
 			upgradeScreen.tick();
 			hud.tick();
+			
+			if (isEasy) { // On Easy difficulty, plays "Sweden.wav"
+				if(!soundPlayer.getSong().equals("music/sweden.wav")) {
+					soundPlayer.stop_playing();
+					soundPlayer = new SoundPlayer("music/sweden.wav", true);
+					soundPlayer.start();
+				}
+			} else { // On Hard difficulty, plays "Megalovania.wav"
+				if(!soundPlayer.getSong().equals("music/megalovania.wav")) {
+					soundPlayer.stop_playing();
+					soundPlayer = new SoundPlayer("music/megalovania.wav", true);
+					soundPlayer.start();
+				}
+			}
+			
 			if (Spawn1to10.LEVEL_SET == 1) {// user is on levels 1 thru 10, update them
-				spawner.tick();
-			} else if (Spawn1to10.LEVEL_SET == 2) {// user is on levels 10 thru 20, update them
+				spawner.tick();				
+			}
+			else if (Spawn1to10.LEVEL_SET == 2) {// user is on levels 10 thru 20, update them
 				spawner2.tick();
 			}
-		} else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) {// user is on menu, update the menu items
+			
+			
+		}
+		else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) { // user is on menu, update the menu items
 			menu.tick();
-		} else if (gameState == STATE.Upgrade) {// user is on upgrade screen, update the upgrade screen
+			
+//			// This block of code causes the game to not "fully render", but music still plays
+//			// Main Menu music plays when going back to menu/help/difficulty state
+//			if (!soundPlayer.getSong().equals("music/smashTheme.wav")) {
+//				soundPlayer.stop_playing();
+//				soundPlayer = new SoundPlayer("music/smashTheme.wav", true);
+//				soundPlayer.start();
+//			}
+			
+		} 
+		else if (gameState == STATE.Upgrade) {// user is on upgrade screen, update the upgrade screen
 			upgradeScreen.tick();
-		} else if (gameState == STATE.GameOver) {// game is over, update the game over screen
+		} 
+		else if (gameState == STATE.GameOver) {// game is over, update the game over screen
 			gameOver.tick();
+			if (!soundPlayer.getSong().equals("sounds/marioDie.wav")) { // Whenever player dies, mario death music plays
+				soundPlayer.stop_playing();
+				soundPlayer = new SoundPlayer("sounds/marioDie.wav", false);
+				soundPlayer.start();
+			}
 		}
 		else if (gameState == STATE.Skins) {// game is over, update the game over screen
 			handler.clearPlayer();
 		}
 		
-		
-
 	}
+	
 
 	/**
 	 * Constantly drawing to the many buffer screens of each entity requiring the
@@ -189,8 +247,7 @@ public class Game extends Canvas implements Runnable {
 
 		if (gameState == STATE.Game) {// user is playing game, draw game objects
 			hud.render(g);
-		} else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) {// user is in help or the menu, draw the menu
-																		// and help objects
+		} else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) {// user is in help or the menu, draw the menu and help objects
 			menu.render(g);
 		} else if (gameState == STATE.Upgrade) {// user is on the upgrade screen, draw the upgrade screen
 			upgradeScreen.render(g);
@@ -202,6 +259,7 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 	}
+	
 
 	/**
 	 * 

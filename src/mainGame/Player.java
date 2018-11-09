@@ -68,7 +68,9 @@ public class Player extends GameObject {
 
 	public void checkIfDead() {
 		if (hud.health <= 0) {// player is dead, game over!
-
+			
+			game.die.play();
+			
 			if (hud.getExtraLives() == 0) {
 				game.gameState = STATE.GameOver;
 			}
@@ -99,6 +101,11 @@ public class Player extends GameObject {
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
 					hud.health -= damage;
 					hud.updateScoreColor(Color.red);
+					
+					if (hud.health > 0) { // Only plays "hit" sound if health > 0. If health <= 0, ONLY "death" sound plays (line 70)
+						game.hit.play();
+					}
+					
 				}
 
 			}

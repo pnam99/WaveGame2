@@ -134,10 +134,14 @@ public class KeyInput extends KeyAdapter {
 		// Experimental Code with the Escape Key (Game Quit Confirmation)
 		if (key == KeyEvent.VK_ESCAPE) {
 //			game.stop();
+			game.pause.play();
 			int dialogButton = JOptionPane.YES_NO_OPTION;
-			JOptionPane.showConfirmDialog(null,"Would you like to quit the game?", "Warning",dialogButton);
+			JOptionPane.showConfirmDialog(null,"Would you like to quit the game?", "Warning", dialogButton);
 			if(dialogButton==JOptionPane.YES_OPTION) {
 				System.exit(0);
+			}
+			else {
+				game.back.play();
 			}
 		}
 		 

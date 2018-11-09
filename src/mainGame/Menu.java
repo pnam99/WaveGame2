@@ -7,8 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem; // For playing audio file
+import javax.sound.sampled.Clip; // For playing audio file
 
 import mainGame.Game.STATE;
 
@@ -75,6 +76,7 @@ public class Menu {
 			e.printStackTrace();
 		}
 		
+		
 		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
 				colorPick.get(r.nextInt(4)), ID.Firework, this.handler,true));
 	}
@@ -100,12 +102,38 @@ public class Menu {
 		}
 		handler.tick();
 	}
+	
+//	public void playSound(File sound) { //Plays audio files
+//		
+//		File menuMusic = new File("audio/music/Smash 4 - Main Theme.wav");
+//		File easyDiffMusic = new File("audio/music/C418 - Sweden.wav");
+//		File hardDiffMusic = new File("audio/music/Undertale - Megalovania");
+//		File select = new File("audio/effect/meleeMenuSelect.wav");
+//		File back = new File("audio/effect/meleeMenuBack.wav");
+//		File hit = new File("audio/effect/steveHurt.wav");
+//		File die = new File("audio/effect/robloxDeath.wav");
+//		File dieMusic = new File("audio/effect/marioDie.wav");
+//		File pause = new File("audio/effect/marioPause.wav");
+//		
+//		try {
+//			Clip clip = AudioSystem.getClip();
+//			clip.open(AudioSystem.getAudioInputStream(sound));
+//			clip.start();
+//			
+//			Thread.sleep(clip.getMicrosecondLength()/1000);
+//		}
+//		
+//		catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Menu) {
-//			g.drawImage(img, 0, 0, Game.WIDTH, Game.HEIGHT, null); //Green misty background
-			g.drawImage(img5, 0, 0, 1300, 660, null); // Drone View
+			g.drawImage(img5, 0, 0, 1300, 660, null); // Drone View Wallpaper
 			handler.render(g);
+			
 			Font font = new Font("Amoebic", 1, 60);
 			Font font2 = new Font("Amoebic", 1, 60);
 
@@ -160,6 +188,7 @@ public class Menu {
 			g.drawImage(img2, 0, 0, 1280, 700, null); //Sets the background for help menu
 			g.drawImage(img3, 425, 80, 450, 450, null); //Bobcat picture
 			handler.render(g); //Sets the background for help menu
+			
 			Font font = new Font("Amoebic", 1, 55);
 			Font font2 = new Font("Amoebic", 5, 20);
 
