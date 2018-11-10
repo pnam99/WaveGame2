@@ -181,6 +181,9 @@ public class Game extends Canvas implements Runnable {
 		else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) { // user is on menu, update the menu items
 			menu.tick();
 			
+			/**
+			 * THIS BLOCK HAS BEEN REPLACED WITH LINES 60-63 IN "MouseListener.java" CLASS!!!
+			 * 
 //			// This block of code causes the game to not "fully render", but music still plays
 //			// Main Menu music plays when going back to menu/help/difficulty state
 //			if (!soundPlayer.getSong().equals("music/smashTheme.wav")) {
@@ -188,6 +191,8 @@ public class Game extends Canvas implements Runnable {
 //				soundPlayer = new SoundPlayer("music/smashTheme.wav", true);
 //				soundPlayer.start();
 //			}
+ * 
+			*/
 			
 		} 
 		else if (gameState == STATE.Upgrade) {// user is on upgrade screen, update the upgrade screen

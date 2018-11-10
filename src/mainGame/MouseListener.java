@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 import mainGame.Game.STATE;
+import mainGame.audio.SoundPlayer;
 
 /**
  * Handles all mouse input
@@ -53,8 +54,14 @@ public class MouseListener extends MouseAdapter {
 			spawner2.restart();
 			spawner2.addLevels();
 			Spawn1to10.LEVEL_SET = 1;
+			
 			game.back.play(); // Plays "Back" sound when you click on GameOver screen to go back to menu
-			game.gameState = STATE.Menu;
+			game.gameState = STATE.Menu; //Game state changes to MENU (Main Menu)
+			
+			//THIS REPLACES LINES 184-190 IN "GAME.JAVA" CLASS!!!
+			//Once player dies and goes back to main menu, main menu music plays.
+			game.soundPlayer = new SoundPlayer("music/smashTheme.wav", true);
+			game.soundPlayer.start();
 		}
 
 		else if (game.gameState == STATE.Game) {
