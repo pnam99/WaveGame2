@@ -5,6 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.AffineTransform;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 /**
  * The game over screen
@@ -31,12 +37,13 @@ public class GameOver {
 	}
 
 	public void tick() {
-		handler.clearPlayer();
+
 		flash();
 
 	}
 
 	public void render(Graphics g) {
+
 		Font font = new Font("Amoebic", 1, 100);
 		Font font2 = new Font("Amoebic", 1, 60);
 		g.setFont(font);
@@ -54,6 +61,48 @@ public class GameOver {
 
 	}
 
+	public void checkHighScore() {
+		int score = hud.getScore();
+		String[] leaderboard = game.getLeaderboard();
+		int[] scores = new int[leaderboard.length + 1];
+		String[] tempLeaderboard=new String[leaderboard.length+1];
+		tempLeaderboard[tempLeaderboard.length-1]="Dummy-0";
+		int i = 0;
+		for (String line : leaderboard) {
+			scores[i] = Integer.parseInt(line.substring(line.indexOf("-") + 1, line.length()));
+			tempLeaderboard[i]=line;
+			i++;
+		}
+		scores[scores.length - 1] = score;
+		boolean newHighScore = false;
+		for (int k = 0; k < scores.length; k++) {
+			for (int j = 0; j < scores.length - 1; j++) {
+				if (scores[j] < scores[j + 1]) {
+					int temp = scores[j + 1];
+					String temp2= tempLeaderboard[j+1];
+					scores[j + 1] = scores[j];
+					tempLeaderboard[j+1]=tempLeaderboard[j];
+					scores[j] = temp;
+					tempLeaderboard[j]=temp2;
+					newHighScore = true;
+				}
+			}
+		}
+		if (newHighScore) {
+			String name = JOptionPane.showInputDialog("New Highscore! Enter your name!");
+			for (int j=0;j<leaderboard.length;j++) {
+				String line=tempLeaderboard[j];
+				if (scores[j] == score) {
+					leaderboard[j] = name + "-" + scores[j];
+				} else {
+					leaderboard[j] = line.substring(0, line.indexOf("-") + 1) + scores[j];
+				}
+				System.out.println(i);
+			}
+			game.rewriteLeaderboard(leaderboard);
+		}
+	}
+
 	public void flash() {
 		timer--;
 		if (timer == 45) {
@@ -67,10 +116,8 @@ public class GameOver {
 	/**
 	 * Function for getting the pixel width of text
 	 * 
-	 * @param font
-	 *            the Font of the test
-	 * @param text
-	 *            the String of text
+	 * @param font the Font of the test
+	 * @param text the String of text
 	 * @return width in pixels of text
 	 */
 	public int getTextWidth(Font font, String text) {

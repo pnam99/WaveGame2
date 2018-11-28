@@ -29,6 +29,7 @@ public class Player extends GameObject {
 	private Color color;
 	private Color trailColor;
 	private Trail trail;
+	private boolean isDead;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game, boolean dif) {
 		super(x, y, id,dif);
@@ -38,6 +39,7 @@ public class Player extends GameObject {
 		this.hud = hud;
 		this.game = game;
 		this.damage = 2;
+		this.isDead=false;
 		playerWidth = 32;
 		playerHeight = 32;
 		this.setDifficulty();
@@ -67,12 +69,13 @@ public class Player extends GameObject {
 	}
 
 	public void checkIfDead() {
+		
 		if (hud.health <= 0) {// player is dead, game over!
-			
 			game.die.play();
-			
 			if (hud.getExtraLives() == 0) {
 				game.gameState = STATE.GameOver;
+				 handler.clearPlayer();
+				 game.checkLeaderboard();
 			}
 
 			else if (hud.getExtraLives() > 0) {// has an extra life, game continues

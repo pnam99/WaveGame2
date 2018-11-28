@@ -156,6 +156,11 @@ public class MouseListener extends MouseAdapter {
 				//game.gameState = STATE.Upgrade;
 			}
 			
+			else if(mouseOver(mx,my,550, 250, 200, 64))//Hard
+			{
+				game.gameState=STATE.Leaderboard;		
+			}
+			
 			else if(mouseOver(mx,my,700, 400, 200, 64))//Hard
 			{
 				game.select.play();
@@ -170,6 +175,15 @@ public class MouseListener extends MouseAdapter {
 				game.gameState=STATE.Menu;		
 			}
 		}
+		else if(game.gameState == STATE.Leaderboard)
+		{
+			if(mouseOver(mx,my,551, 540, 200, 64))//Back
+			{
+				game.back.play();
+				game.gameState=STATE.Menu;		
+			}
+		}
+		
 	}
 
 	public void mouseReleased(MouseEvent e) {

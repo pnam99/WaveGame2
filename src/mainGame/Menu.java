@@ -244,6 +244,12 @@ public class Menu {
 
 			g.setFont(font2);
 			
+			
+			g.setColor(new Color(186,151,39));
+			g.drawRect(550, 250, 200, 64);
+			g.setColor(Color.WHITE);
+			g.drawString("Leaderboard", 560, 295);
+			
 			g.setColor(new Color(0,54,130));
 			g.drawRect(400, 400, 200, 64);
 			g.drawString("Easy", 470, 443);
@@ -256,5 +262,28 @@ public class Menu {
 			
 		
 	}
+		else if (game.gameState == STATE.Leaderboard) {// if the user clicks on "help"
+			Font font = new Font("impact", 1, 100);
+			Font font2 = new Font("impact", 1, 30);
+			
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(551, 539, 200, 64);
+			g.drawString("Back", 619, 580);
+			
+			g.setFont(font);
+			g.setColor(Color.WHITE);
+			
+			
+			g.drawString("Leaderboard", 350, 100);
+			g.setFont(font2);
+			String[] leaderboard=game.getLeaderboard();
+			int space=0;
+			for(String name:leaderboard)
+			{
+				g.drawString(name, 550, 200+space);
+				space+=50;
+			}
+		}
 	}
 }

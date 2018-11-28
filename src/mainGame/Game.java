@@ -6,6 +6,10 @@ import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.image.BufferStrategy;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javafx.embed.swing.JFXPanel;
 import mainGame.audio.SoundPlayer; //SOUND
@@ -51,7 +55,7 @@ public class Game extends Canvas implements Runnable {
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Difficulty, Skins,
+		Menu, Help, Game, GameOver, Upgrade, Difficulty, Skins, Leaderboard
 	};
 
 	/**
@@ -178,7 +182,7 @@ public class Game extends Canvas implements Runnable {
 			
 			
 		}
-		else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) { // user is on menu, update the menu items
+		else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty||gameState==STATE.Leaderboard) { // user is on menu, update the menu items
 			menu.tick();
 			
 			/**
@@ -252,7 +256,7 @@ public class Game extends Canvas implements Runnable {
 
 		if (gameState == STATE.Game) {// user is playing game, draw game objects
 			hud.render(g);
-		} else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty) {// user is in help or the menu, draw the menu and help objects
+		} else if (gameState == STATE.Menu || gameState == STATE.Help || gameState==STATE.Difficulty||gameState==STATE.Leaderboard) {// user is in help or the menu, draw the menu and help objects
 			menu.render(g);
 		} else if (gameState == STATE.Upgrade) {// user is on the upgrade screen, draw the upgrade screen
 			upgradeScreen.render(g);
@@ -296,6 +300,46 @@ public class Game extends Canvas implements Runnable {
 	public void setDif(boolean dif)
 	{
 		isEasy=dif;
+	}
+	
+	public String[] getLeaderboard()
+	{
+		String[] leaderboard= new String[5];
+		int i=0;
+		try {
+			File file=new File("leaderboard.txt");
+			Scanner board=new Scanner(file);
+			while(board.hasNext())
+			{
+				String line= board.nextLine();
+				leaderboard[i]=line;
+				i++;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return leaderboard;
+	}
+
+	public void rewriteLeaderboard(String[] leaderboard ) {
+		try {
+			PrintWriter writer=new PrintWriter("leaderboard.txt");
+			for(String line:leaderboard)
+			{
+				writer.println(line);
+				System.out.println(line);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void checkLeaderboard() {
+		gameOver.checkHighScore();
 	}
 
 }
