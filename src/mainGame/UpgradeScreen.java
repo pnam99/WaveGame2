@@ -1,4 +1,4 @@
-	package mainGame;
+		package mainGame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -51,6 +51,8 @@ public class UpgradeScreen {
 	}
 
 	public void render(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 2000, 2000);
 		Font font = new Font("Amoebic", 1, 60);
 		text = "Select an Upgrade!";
 		g.setFont(font);

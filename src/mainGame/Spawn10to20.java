@@ -60,9 +60,7 @@ public class Spawn10to20 {
 		if (levelNumber <= 0) {
 			levelTimer--;
 			if (tempCounter < 1) {
-				handler.addObject(new LevelText(100,350, "Same levels...",
-						ID.Levels1to10Text, isEasy));
-				handler.addObject(new LevelText(500,350, "...but a little harder now",
+				handler.addObject(new LevelText(130,350, "Same levels...but a little harder now",
 						ID.Levels1to10Text, isEasy));
 				tempCounter++;
 			}

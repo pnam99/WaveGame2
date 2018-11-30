@@ -3,6 +3,7 @@ package mainGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem; // For playing audio file
 import javax.sound.sampled.Clip; // For playing audio file
+import javax.swing.ImageIcon;
 
 import mainGame.Game.STATE;
 
@@ -31,6 +33,10 @@ public class Menu {
 	private ArrayList<Color> colorPick = new ArrayList<Color>();
 	private int colorIndex;
 	private Spawn1to10 spawner;
+	
+	private Color[] color = { Color.WHITE, new Color(186,151,39), new Color(0,54,130), Color.WHITE };
+	
+	public Image image;
 
 	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner) {
 		this.game = game;
@@ -41,6 +47,8 @@ public class Menu {
 		r = new Random();
 		addColors();
 
+		image = new ImageIcon("images/giphy.gif").getImage();
+		
 		img = null;
 		try {
 			img = ImageIO.read(new File("images/background.jpg")); // Green misty background
@@ -131,7 +139,7 @@ public class Menu {
 
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Menu) {
-			g.drawImage(img5, 0, 0, 1300, 660, null); // Drone View Wallpaper
+			g.drawImage(image, 0, 0, 1300, 660, null); // Drone View Wallpaper
 			handler.render(g);
 			
 			Font font = new Font("Amoebic", 1, 60);
@@ -158,29 +166,29 @@ public class Menu {
 			g.setColor(new Color(186,151,39));
 			g.drawString("Waves",905,270);
 			
-			g.setColor(new Color(0,54,130));
+			g.setColor(new Color(186,151,39));
 			g.drawRect(800, 370, 400, 240);//(X,Y,Width,Height)
 			g.setFont(font2);
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawString("Skins",905,510);
 
 			
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawRect(80, 125, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawString("Help", 310, 216);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawRect(80, 300, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawString("Credits", 270, 384);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawRect(80, 479, 600, 135);
 			g.setFont(font);
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(186,151,39));
 			g.drawString("Quit", 310, 570);
 		
 
@@ -229,8 +237,8 @@ public class Menu {
 		}
 		
 		else if (game.gameState == STATE.Difficulty) {// if the user clicks on "waves"
-			Font font = new Font("impact", 1, 100);
-			Font font2 = new Font("impact", 1, 30);
+			Font font = new Font("Amoebic", 1, 100);
+			Font font2 = new Font("Amoebic", 1, 30);
 
 			g.setFont(font2);
 			g.setColor(Color.white);
@@ -245,7 +253,7 @@ public class Menu {
 			g.setFont(font2);
 			
 			
-			g.setColor(new Color(186,151,39));
+			g.setColor(Color.WHITE);
 			g.drawRect(550, 250, 200, 64);
 			g.setColor(Color.WHITE);
 			g.drawString("Leaderboard", 560, 295);
